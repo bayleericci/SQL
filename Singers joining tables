@@ -21,7 +21,6 @@ INSERT INTO singer_hometowns VALUES (3, "Phoebe Bridgers", "Los Angeles");
 
 CREATE TABLE genres (id INTEGER PRIMARY KEY,
 genre TEXT);
-
 INSERT INTO genres VALUES (1, "Pop");
 INSERT INTO genres VALUES (2, "R&B");
 INSERT INTO genres VALUES (3, "Indie");
