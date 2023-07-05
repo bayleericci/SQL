@@ -1,0 +1,30 @@
+CREATE TABLE singers (id INTEGER PRIMARY KEY, name TEXT, birth_year INTEGER);
+INSERT INTO singers VALUES (1, "King Princess", 1998);
+INSERT INTO singers VALUES (2, "Taylor Swift", 1989);
+INSERT INTO singers VALUES (3, "Phoebe Bridgers", 1994);
+INSERT INTO singers VALUES (4, "SZA", 1989);
+
+CREATE TABLE songs (id INTEGER PRIMARY KEY, name TEXT, title TEXT);
+INSERT INTO songs VALUES (1, "Taylor Swift", "Clean");
+INSERT INTO songs VALUES (2, "Taylor Swift", "Cruel Summer");
+INSERT INTO songs VALUES (3, "Phoebe Bridgers", "Kyoto");
+INSERT INTO songs VALUES (4, "King Princess", "Talia");
+INSERT INTO songs VALUES (5, "King Princess", "House Burn Down");
+
+CREATE TABLE singer_hometowns (id INTEGER PRIMARY KEY, name TEXT, hometown TEXT);
+INSERT INTO singer_hometowns VALUES (1, "Taylor Swift", "Reading");
+INSERT INTO singer_hometowns VALUES (2, "King Princess", "Brooklyn");
+INSERT INTO singer_hometowns VALUES (3, "Phoebe Bridgers", "Los Angeles"); 
+
+--What are the birthdates and hometowns of the singers?
+SELECT singers.name, singers.birth_year, singer_hometowns.hometown
+FROM singers
+LEFT JOIN singer_hometowns
+ON singers.name=singer_hometowns.name;
+
+--Which are the songs of the singers born in the 1990s?
+SELECT singers.name, songs.title as song
+FROM singers
+JOIN songs
+ON singers.name=songs.name
+WHERE birth_year > 1989;
