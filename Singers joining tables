@@ -1,8 +1,8 @@
-CREATE TABLE singers (id INTEGER PRIMARY KEY, name TEXT, birth_year INTEGER);
-INSERT INTO singers VALUES (1, "King Princess", 1998);
-INSERT INTO singers VALUES (2, "Taylor Swift", 1989);
-INSERT INTO singers VALUES (3, "Phoebe Bridgers", 1994);
-INSERT INTO singers VALUES (4, "SZA", 1989);
+CREATE TABLE singers (id INTEGER PRIMARY KEY, name TEXT, birth_year INTEGER, genre INTEGER);
+INSERT INTO singers VALUES (1, "King Princess", 1998, 1);
+INSERT INTO singers VALUES (2, "Taylor Swift", 1989, 1);
+INSERT INTO singers VALUES (3, "Phoebe Bridgers", 1994, 3);
+INSERT INTO singers VALUES (4, "SZA", 1989, 2);
 
 CREATE TABLE songs (id INTEGER PRIMARY KEY, name TEXT, title TEXT);
 INSERT INTO songs VALUES (1, "Taylor Swift", "Clean");
@@ -10,11 +10,22 @@ INSERT INTO songs VALUES (2, "Taylor Swift", "Cruel Summer");
 INSERT INTO songs VALUES (3, "Phoebe Bridgers", "Kyoto");
 INSERT INTO songs VALUES (4, "King Princess", "Talia");
 INSERT INTO songs VALUES (5, "King Princess", "House Burn Down");
+INSERT INTO songs VALUES (6, "SZA", "Kill Bill");
+INSERT INTO songs VALUES (7, "SZA", "Special");
+INSERT INTO songs VALUES (8, "Taylor Swift", "All Too Well");
 
 CREATE TABLE singer_hometowns (id INTEGER PRIMARY KEY, name TEXT, hometown TEXT);
 INSERT INTO singer_hometowns VALUES (1, "Taylor Swift", "Reading");
 INSERT INTO singer_hometowns VALUES (2, "King Princess", "Brooklyn");
 INSERT INTO singer_hometowns VALUES (3, "Phoebe Bridgers", "Los Angeles"); 
+
+CREATE TABLE genres (id INTEGER PRIMARY KEY,
+genre TEXT);
+
+INSERT INTO genres VALUES (1, "Pop");
+INSERT INTO genres VALUES (2, "R&B");
+INSERT INTO genres VALUES (3, "Indie");
+
 
 --What are the birthdates and hometowns of the singers?
 SELECT singers.name, singers.birth_year, singer_hometowns.hometown
@@ -28,3 +39,9 @@ FROM singers
 JOIN songs
 ON singers.name=songs.name
 WHERE birth_year > 1989;
+
+--What are the genres of the singers?
+SELECT singers.name, genres.genre
+FROM singers
+JOIN genres
+ON singers.genre=genres.id;
